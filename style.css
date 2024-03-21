@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.search-box {
+    margin-bottom:20px;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+#search-input{
+    border: 2px solid #d1d1d1;
+    height: 30px;
+    outline: none;
+    padding: 5px;
+    margin-right: -4px;
+}
+#search-btn{
+    height: 30px;
+    border: none;
+    background-color:red;
+    color: white;
+}
