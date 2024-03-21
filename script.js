@@ -6,15 +6,36 @@ const result = document.getElementById("result");
 
 search_btn.addEventListener("click", () => {
     let userInput = search_input.value;
-    console.log(userInput);
+    result.innerHTML = ""; 
+    
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${userInput}`)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            result.innerHTML = `<h3>Word:- ${data[0].word}</h3>
-                                <p>-Definitions: ${data[0].meanings[0].definitions[0].definition}</p>`;
+            // console.log(data)
+            if (Array.isArray(data)) {
+                // console.log(isArray)
+                data.map(word=> {
+                    const meanings =word.meanings;
+                    // console.log(meanings)
+                    if (meanings) {
+                        meanings.forEach(meaning => {
+                            const partOfSpeech = meaning.partOfSpeech;
+                            result.innerHTML += `<p>Part of Speech: ${partOfSpeech}</p>`;
+                            meaning.definitions.forEach(definition => {
+                                result.innerHTML += `<p>-Definition: ${definition.definition}</p>`;
+                            });
+                        });
+                    } else {
+                        result.innerHTML += `<p>No meanings found for the word "${userInput}"</p>`;
+                    }
+                });
+            } else {
+                result.innerHTML += `<p>No data found for the word "${userInput}"</p>`;
+            }
         })
         .catch((error) => {
-            console.log("Error fetching data ",error);
+            result.innerHTML = `<p>Error fetching data: ${error}</p>`;
         });
 });
+
+

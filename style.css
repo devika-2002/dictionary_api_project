@@ -1,14 +1,4 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    margin: 0;
-}
 
-.container {
-    text-align: center;
-}
 
 .search-box {
     margin-bottom:20px;
