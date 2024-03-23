@@ -12,6 +12,7 @@ search_btn.addEventListener("click", () => {
         .then((response) => response.json())
         .then((data) => {
             // console.log(data)
+            result.innerHTML+=`<h3>Word:- ${userInput}</h3>`
             if (Array.isArray(data)) {
                 // console.log(isArray)
                 data.map(word=> {
